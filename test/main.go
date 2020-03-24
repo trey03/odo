@@ -30,15 +30,19 @@ func main() {
 	session.SetDir(workDir)
 	session.PipeFail = true
 
+	appEnvInfo := &odo.AppEnvInfo{
+		Env:    "dev",
+		Branch: "feature/20200324_dev_01",
+	}
+
 	context := &odo.Context{
-		AppConfig: appConfig,
-		Session:   session,
+		AppConfig:  appConfig,
+		Session:    session,
+		AppEnvInfo: appEnvInfo,
 	}
 
 	var gitWorker = new(git.GitWorker)
-	msg, err := gitWorker.Work(context)
-
-	fmt.Println(msg)
+	_, err := gitWorker.Work(context)
 
 	if err != nil {
 		fmt.Println("error:", err)

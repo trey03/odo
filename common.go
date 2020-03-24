@@ -9,12 +9,17 @@ type AppConfig struct {
 	GitUrl  string
 	WorkDir string
 }
+type AppEnvInfo struct {
+	Env    string
+	Branch string
+}
 
 type Worker interface {
-	Work(c *AppConfig)(string,error)
+	Work(c *AppConfig) (string, error)
 }
 
 type Context struct {
-	AppConfig *AppConfig
-	Session   *sh.Session
+	AppConfig  *AppConfig
+	Session    *sh.Session
+	AppEnvInfo *AppEnvInfo
 }
