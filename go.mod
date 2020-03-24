@@ -2,7 +2,4 @@ module odo
 
 go 1.14
 
-require (
-	gopkg.in/src-d/go-billy.v4 v4.3.2
-	gopkg.in/src-d/go-git.v4 v4.13.1
-)
+require github.com/codegangsta/inject v0.0.0-20150114235600-33e0aa1cb7c0

@@ -1,14 +1,30 @@
 package git
 
-type Worker interface{
-	work(appId string) 
+import "odo"
+
+type GitWorker struct {
+	context *odo.Context
 }
 
-type GitWorker struct{
-	appId string,
-}
+// Work git work
+func (g *GitWorker) Work(c *odo.Context) (string, error) {
 
-func (g *GitWorker) work(appId string) {
-	//根据appId获取配置信息，如git url
-	url := "  "
+	//拉取代码库
+	msg, err := Clone(c)
+
+	if err != nil {
+		return msg, err
+	}
+
+	//进入工程目录
+
+	//创建一个release分支
+	// ... checking out to commit
+
+	//合并多个开发分支
+	//var branchs = []string{"release/test_01","release/test_02","release/test_03"}
+	//for _, br := range branchs {
+	//TODO 太吐血了，go-git还没有merge或re
+	//}
+	return msg, nil
 }
