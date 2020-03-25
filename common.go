@@ -12,6 +12,7 @@ type AppConfig struct {
 type AppEnvInfo struct {
 	Env    string
 	Branch string
+	DevBranches []string
 }
 
 type Worker interface {

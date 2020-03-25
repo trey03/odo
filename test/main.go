@@ -33,6 +33,7 @@ func main() {
 	appEnvInfo := &odo.AppEnvInfo{
 		Env:    "dev",
 		Branch: "feature/20200324_dev_01",
+		DevBranches: []string{"origin/feature/20200325_menu_010","origin/feature/20200325_menu_020"},
 	}
 
 	context := &odo.Context{
@@ -41,8 +42,17 @@ func main() {
 		AppEnvInfo: appEnvInfo,
 	}
 
+	//获取代码、合并分支
 	var gitWorker = new(git.GitWorker)
 	_, err := gitWorker.Work(context)
+
+	//单元测试+代码质量检查
+
+	//构建应该包
+
+	//构建镜像
+
+	//上传镜像
 
 	if err != nil {
 		fmt.Println("error:", err)

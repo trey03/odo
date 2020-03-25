@@ -27,11 +27,13 @@ func (g *GitWorker) Work(c *odo.Context) (string, error) {
 	if err != nil {
 		return msg, err
 	}
-
+	
 	//合并多个开发分支
-	//var branchs = []string{"release/test_01","release/test_02","release/test_03"}
-	//for _, br := range branchs {
-	//TODO 太吐血了，go-git还没有merge或re
-	//}
+	msg, err = Merge(c)
+	fmt.Println(msg)
+	if err != nil {
+		return msg, err
+	}
+
 	return msg, nil
 }
