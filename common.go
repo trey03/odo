@@ -16,7 +16,7 @@ type AppEnvInfo struct {
 }
 
 type Worker interface {
-	Work(c *AppConfig) (string, error)
+	Work(c *Context) (string, error)
 }
 
 type Context struct {

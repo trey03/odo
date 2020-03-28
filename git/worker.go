@@ -3,6 +3,7 @@ package git
 import (
 	"fmt"
 	"odo"
+	"os"
 )
 
 // GitWorker git work flow
@@ -12,7 +13,15 @@ type GitWorker struct {
 
 // Work git work
 func (g *GitWorker) Work(c *odo.Context) (string, error) {
-
+	logFile := c.AppConfig.WorkDir + "/git.log"
+	out,err := os.Create(logFile)
+	if err != nil {
+		return "", err
+	}
+	defer out.Close()
+	c.Session.Stderr = out
+	c.Session.Stdout = out
+	
 	//拉取代码库
 	msg, err := Clone(c)
 	fmt.Println(msg)
